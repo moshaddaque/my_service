@@ -128,10 +128,33 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 20.0,
                 ),
-                ServiceCard(media: media),
-                ServiceCard(media: media),
-                ServiceCard(media: media),
-                ServiceCard(media: media),
+                ServiceCard(
+                  media: media,
+                  charge: 24,
+                  serviceManName: "Shauli",
+                  serviceType: "Home Cleaning",
+                  serviceManImage:
+                      "https://www.missionphotographe.com/ressources/images-actualites/actualite-204.jpg",
+                  rating: 3.5,
+                ),
+                ServiceCard(
+                  media: media,
+                  charge: 24,
+                  serviceManName: "Rakib",
+                  serviceType: "Laundry",
+                  serviceManImage:
+                      "https://static.vecteezy.com/system/resources/thumbnails/006/859/348/small/young-boy-indian-student-portrait-photo.jpg",
+                  rating: 3.7,
+                ),
+                ServiceCard(
+                  media: media,
+                  charge: 24,
+                  serviceManName: "Zillu",
+                  serviceType: "Reparing",
+                  serviceManImage:
+                      "https://t3.ftcdn.net/jpg/06/99/46/60/240_F_699466075_DaPTBNlNQTOwwjkOiFEoOvzDV0ByXR9E.jpg",
+                  rating: 4.5,
+                ),
               ],
             ),
           ),
@@ -142,9 +165,20 @@ class _HomePageState extends State<HomePage> {
 }
 
 class ServiceCard extends StatelessWidget {
+  final String serviceType;
+  final String serviceManName;
+  final String serviceManImage;
+  final double charge;
+  final double rating;
+
   const ServiceCard({
     super.key,
     required this.media,
+    required this.serviceType,
+    required this.serviceManName,
+    required this.charge,
+    required this.serviceManImage,
+    required this.rating,
   });
 
   final Size media;
@@ -166,7 +200,7 @@ class ServiceCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(
-                "https://sharedp.com/wp-content/uploads/2024/06/cute-girl-pic-cartoon-960x1024.jpg",
+                serviceManImage,
                 height: 120,
                 width: 90,
                 fit: BoxFit.cover,
@@ -190,7 +224,7 @@ class ServiceCard extends StatelessWidget {
                       width: 5.0,
                     ),
                     Text(
-                      "4.5",
+                      "$rating",
                       style: TextStyle(
                         color: Color(0xFF284a79),
                         fontSize: 18.0,
@@ -203,7 +237,7 @@ class ServiceCard extends StatelessWidget {
                   height: 10.0,
                 ),
                 Text(
-                  "Home Cleaning",
+                  serviceType,
                   style: const TextStyle(
                     color: Color(0xFF284a79),
                     fontSize: 16.0,
@@ -211,7 +245,7 @@ class ServiceCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "By Maria Dosi",
+                  serviceManName,
                   style: const TextStyle(
                     color: Color(0xFF284a79),
                     fontSize: 15.0,
@@ -228,14 +262,14 @@ class ServiceCard extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(5),
                         child: ColoredBox(
-                          color: Color(0xFF284a79),
+                          color: const Color(0xFF284a79),
                           child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 5),
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
                             child: Text(
-                              "\$24/Hour",
+                              "\$${charge.toStringAsFixed(1)}/Hour",
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 18.0,
+                                fontSize: 17.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -244,12 +278,12 @@ class ServiceCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      width: 10,
+                      width: 5,
                     ),
                     SizedBox(
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(5),
-                        child: ColoredBox(
+                        child: const ColoredBox(
                           color: Color(0xFFFB631A),
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 5),
@@ -257,7 +291,7 @@ class ServiceCard extends StatelessWidget {
                               "Book Now",
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 18.0,
+                                fontSize: 17.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
