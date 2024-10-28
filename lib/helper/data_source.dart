@@ -23,6 +23,8 @@ final List serviceList = [
     "serviceImage2":
         "https://we-wash.com/wp-content/uploads/2023/07/wew-header.jpg",
     "rating": 3.9,
+    "about":
+        "Why get service from here?\nOne stop cleaning service\nVery easy to order\nWe are only one phone call or chat away\nSaves time & energy from your daily activities\nLess expanse compared to other laundry service provider\nNo need to waste time in front of any laundry shop for deposit and pickup\nSpecial spot removal service\nCustomer chat and hotline support\nBetter quality wash and packaging"
   },
   {
     "charge": 24.0,
@@ -35,6 +37,8 @@ final List serviceList = [
     "serviceImage2":
         "https://live.staticflickr.com/167/465742728_c1e15eabe7_z.jpg",
     "rating": 4.5,
+    "about":
+        "Why get service from DhopaGhat?\nOne stop cleaning service\nVery easy to order\nWe are only one phone call or chat away\nSaves time & energy from your daily activities\nLess expanse compared to other laundry service provider\nNo need to waste time in front of any laundry shop for deposit and pickup\nSpecial spot removal service\nCustomer chat and hotline support\nBetter quality wash and packaging"
   }
 ];
 
