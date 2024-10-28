@@ -180,30 +180,66 @@ class BookPage extends StatelessWidget {
                 ],
               ),
               const Positioned(
-                bottom: 80,
+                bottom: 100,
                 left: 0,
                 right: 0,
                 child: TimeSelection(),
               ),
-              Container(
-                width: media.width,
-                height: 60,
-                margin: const EdgeInsets.only(bottom: 10),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF284a79),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: const Center(
-                    child: Text(
-                  "Book Now",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                )),
-              ),
+              BookButton(media: media),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class BookButton extends StatelessWidget {
+  const BookButton({
+    super.key,
+    required this.media,
+  });
+
+  final Size media;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text(
+              "Booked Successfully",
+              style: TextStyle(color: Colors.black),
+            ),
+            backgroundColor: Colors.greenAccent,
+            behavior: SnackBarBehavior.floating,
+            dismissDirection: DismissDirection.none,
+            elevation: 5,
+            margin: EdgeInsets.only(
+              bottom: media.height - 100,
+              left: 10,
+              right: 10,
+            ),
+          ),
+        );
+      },
+      child: Container(
+        width: media.width,
+        height: 60,
+        margin: const EdgeInsets.only(bottom: 10),
+        decoration: BoxDecoration(
+          color: const Color(0xFF284a79),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: const Center(
+          child: Text(
+            "Book Now",
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
@@ -232,7 +268,10 @@ class _TimeSelectionState extends State<TimeSelection> {
         children: [
           const Text(
             "Select Time",
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(
+            height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -247,7 +286,9 @@ class _TimeSelectionState extends State<TimeSelection> {
                 },
                 isSelected: selectedTime == BookingTime.morning,
               ),
-              const SizedBox(width: 10),
+              SizedBox(
+                width: media.width * .05,
+              ),
               TimeSelectCard(
                 media: media,
                 label: BookingTime.evening.name,
@@ -255,11 +296,12 @@ class _TimeSelectionState extends State<TimeSelection> {
                   setState(() {
                     selectedTime = BookingTime.evening;
                   });
-                  print(selectedTime);
                 },
                 isSelected: selectedTime == BookingTime.evening,
               ),
-              const SizedBox(width: 10),
+              SizedBox(
+                width: media.width * .05,
+              ),
               TimeSelectCard(
                 media: media,
                 label: BookingTime.night.name,
@@ -267,7 +309,6 @@ class _TimeSelectionState extends State<TimeSelection> {
                   setState(() {
                     selectedTime = BookingTime.night;
                   });
-                  print(selectedTime);
                 },
                 isSelected: selectedTime == BookingTime.night,
               ),
@@ -301,7 +342,7 @@ class TimeSelectCard extends StatelessWidget {
         child: Container(
           alignment: Alignment.center,
           width: media.width * .25,
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           decoration: BoxDecoration(
             color: isSelected ? const Color(0xFFFB631A) : Colors.white,
             borderRadius: BorderRadius.circular(10),
