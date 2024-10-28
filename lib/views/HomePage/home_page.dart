@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_service/views/BookPage/book_page.dart';
+
+import '../../helper/data_source.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,6 +15,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           alignment: Alignment.center,
@@ -106,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                             image: "assets/images/laundry.png",
                           ),
                           CategoryCard(
-                            title: "Reparing",
+                            title: "Repairing",
                             image: "assets/images/reparing.png",
                           ),
                         ],
@@ -114,8 +118,11 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
                 const Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     "Popular Service",
                     style: TextStyle(
@@ -125,35 +132,30 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                ServiceCard(
-                  media: media,
-                  charge: 24,
-                  serviceManName: "Shauli",
-                  serviceType: "Home Cleaning",
-                  serviceManImage:
-                      "https://www.missionphotographe.com/ressources/images-actualites/actualite-204.jpg",
-                  rating: 3.5,
-                ),
-                ServiceCard(
-                  media: media,
-                  charge: 24,
-                  serviceManName: "Rakib",
-                  serviceType: "Laundry",
-                  serviceManImage:
-                      "https://static.vecteezy.com/system/resources/thumbnails/006/859/348/small/young-boy-indian-student-portrait-photo.jpg",
-                  rating: 3.7,
-                ),
-                ServiceCard(
-                  media: media,
-                  charge: 24,
-                  serviceManName: "Zillu",
-                  serviceType: "Reparing",
-                  serviceManImage:
-                      "https://t3.ftcdn.net/jpg/06/99/46/60/240_F_699466075_DaPTBNlNQTOwwjkOiFEoOvzDV0ByXR9E.jpg",
-                  rating: 4.5,
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: serviceList.length,
+                  primary: true,
+                  scrollDirection: Axis.vertical,
+                  itemBuilder: (context, index) {
+                    var card = serviceList[index];
+                    return ServiceCard(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => BookPage(service: card),
+                          ),
+                        );
+                      },
+                      media: media,
+                      charge: card["charge"],
+                      serviceManName: card["serviceManName"],
+                      serviceType: card["serviceType"],
+                      serviceManImage: card["serviceManImage"],
+                      rating: card["rating"],
+                    );
+                  },
                 ),
               ],
             ),
@@ -170,6 +172,7 @@ class ServiceCard extends StatelessWidget {
   final String serviceManImage;
   final double charge;
   final double rating;
+  final Function() onTap;
 
   const ServiceCard({
     super.key,
@@ -179,131 +182,136 @@ class ServiceCard extends StatelessWidget {
     required this.charge,
     required this.serviceManImage,
     required this.rating,
+    required this.onTap,
   });
 
   final Size media;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      width: media.width,
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 197, 227, 244),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                serviceManImage,
-                height: 120,
-                width: 90,
-                fit: BoxFit.cover,
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        width: media.width,
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 197, 227, 244),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
+                  serviceManImage,
+                  height: 120,
+                  width: 90,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            const SizedBox(
-              width: 10.0,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.star,
-                      color: Colors.orange,
-                    ),
-                    const SizedBox(
-                      width: 5.0,
-                    ),
-                    Text(
-                      "$rating",
-                      style: TextStyle(
-                        color: Color(0xFF284a79),
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
+              const SizedBox(
+                width: 10.0,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.star,
+                        color: Colors.orange,
                       ),
+                      const SizedBox(
+                        width: 5.0,
+                      ),
+                      Text(
+                        "$rating",
+                        style: const TextStyle(
+                          color: Color(0xFF284a79),
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    serviceType,
+                    style: const TextStyle(
+                      color: Color(0xFF284a79),
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Text(
-                  serviceType,
-                  style: const TextStyle(
-                    color: Color(0xFF284a79),
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
                   ),
-                ),
-                Text(
-                  serviceManName,
-                  style: const TextStyle(
-                    color: Color(0xFF284a79),
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.w500,
+                  Text(
+                    "By $serviceManName",
+                    style: const TextStyle(
+                      color: Color(0xFF284a79),
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(5),
-                        child: ColoredBox(
-                          color: const Color(0xFF284a79),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 5),
-                            child: Text(
-                              "\$${charge.toStringAsFixed(1)}/Hour",
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 17.0,
-                                fontWeight: FontWeight.bold,
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: ColoredBox(
+                            color: const Color(0xFF284a79),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5),
+                              child: Text(
+                                "\$${charge.toStringAsFixed(1)}/Hour",
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    SizedBox(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(5),
-                        child: const ColoredBox(
-                          color: Color(0xFFFB631A),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 5),
-                            child: Text(
-                              "Book Now",
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 17.0,
-                                fontWeight: FontWeight.bold,
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      SizedBox(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: const ColoredBox(
+                            color: Color(0xFFFB631A),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              child: Text(
+                                "Book Now",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -325,7 +333,9 @@ class CategoryCard extends StatelessWidget {
       children: [
         Container(
           // margin: const EdgeInsets.symmetric(horizontal: 20),
-          padding: const EdgeInsets.all(20),
+          padding: MediaQuery.of(context).size.width < 448
+              ? const EdgeInsets.all(16)
+              : const EdgeInsets.all(20),
           decoration: const BoxDecoration(
             color: Colors.white,
             shape: BoxShape.circle,
