@@ -26,6 +26,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -39,7 +40,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     style: TextButton.styleFrom(
                       backgroundColor: const Color(0xFFE6EAFF),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const MainPage(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       'Skip',
                       style: TextStyle(
@@ -85,12 +92,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         const SizedBox(
                           height: 40,
                         ),
-                        buildDot(),
                       ],
                     );
                   },
                 ),
               ),
+              //=====================================
+              buildDot(media.height * .1),
+
+              //=====================================
               InkWell(
                 onTap: () {
                   if (currentIndex == onBoardList.length - 1) {
@@ -108,6 +118,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 },
                 child: Container(
                   padding: const EdgeInsets.all(15),
+                  margin: const EdgeInsets.only(bottom: 20),
                   decoration: BoxDecoration(
                     color: const Color(0xFF283891),
                     borderRadius: BorderRadius.circular(20),
@@ -126,21 +137,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Row buildDot() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        3,
-        (index) {
-          return Container(
-            height: 10,
-            width: currentIndex == index ? 25 : 10,
-            margin: const EdgeInsets.only(right: 5),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: const Color(0xFF283891)),
-          );
-        },
+  buildDot(double height) {
+    return Container(
+      margin: EdgeInsets.only(bottom: height),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(
+          3,
+          (index) {
+            return Container(
+              height: 10,
+              width: currentIndex == index ? 25 : 10,
+              margin: const EdgeInsets.only(right: 5),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color(0xFF283891)),
+            );
+          },
+        ),
       ),
     );
   }

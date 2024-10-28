@@ -16,176 +16,196 @@ class BookPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        scrolledUnderElevation: 0,
+        elevation: 0,
+        leading: InkWell(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: Container(
+            // padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: const Color(0xFF284a79),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: const Icon(
+              Icons.arrow_back_ios_new_outlined,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        actions: [
+          InkWell(
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: const Color(0xFF284a79),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 20),
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: [
-              Column(
-                children: [
-                  // header
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
                     children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF284a79),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Icon(
-                            Icons.arrow_back_ios_new_outlined,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF284a79),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Icon(
-                            Icons.shopping_cart,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  //============================
-                  SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                          width: media.width,
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 197, 227, 244),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        service["serviceType"],
-                                        style: const TextStyle(
-                                          color: Color(0xFF284a79),
-                                          fontSize: 20.0,
-                                          fontWeight: FontWeight.bold,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.symmetric(vertical: 10),
+                            width: media.width,
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 197, 227, 244),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          service["serviceType"],
+                                          style: const TextStyle(
+                                            color: Color(0xFF284a79),
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        "By ${service["serviceManName"]}",
-                                        style: const TextStyle(
-                                          color: Color(0xFF284a79),
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w500,
+                                        Text(
+                                          "By ${service["serviceManName"]}",
+                                          style: const TextStyle(
+                                            color: Color(0xFF284a79),
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(5),
-                                      child: ColoredBox(
-                                        color: const Color(0xFFFB631A),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 10, vertical: 8),
-                                          child: Text(
-                                            "\$${service["charge"].toStringAsFixed(1)}/Hour",
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 17.0,
-                                              fontWeight: FontWeight.bold,
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(5),
+                                        child: ColoredBox(
+                                          color: const Color(0xFFFB631A),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10, vertical: 8),
+                                            child: Text(
+                                              "\$${service["charge"].toStringAsFixed(1)}/Hour",
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 17.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: Image.network(
-                                      service["serviceManImage"],
-                                      width: media.width * .25,
-                                      height: 180,
-                                      fit: BoxFit.cover,
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(15),
+                                      child: Image.network(
+                                        service["serviceManImage"],
+                                        width: media.width * .25,
+                                        height: 180,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                  ),
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.network(
-                                      service["serviceImage1"],
-                                      width: media.width * .25,
-                                      height: 180,
-                                      fit: BoxFit.cover,
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        service["serviceImage1"],
+                                        width: media.width * .25,
+                                        height: 180,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                  ),
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.network(
-                                      service["serviceImage2"],
-                                      width: media.width * .25,
-                                      height: 180,
-                                      fit: BoxFit.cover,
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        service["serviceImage2"],
+                                        width: media.width * .25,
+                                        height: 180,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        const Text(
-                          "About",
-                          style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold),
-                        ),
-                        Text(service["about"] ?? "About"),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    ),
+                          const Text(
+                            "About",
+                            style: TextStyle(
+                                fontSize: 22, fontWeight: FontWeight.bold),
+                          ),
+                          Text(service["about"] ?? "About"),
+                          const SizedBox(
+                            height: 200,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-              const Positioned(
-                bottom: 100,
+
+              //============================
+              Positioned(
+                bottom: 10,
                 left: 0,
                 right: 0,
-                child: TimeSelection(),
+                child: Container(
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const TimeSelection(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      BookButton(media: media),
+                    ],
+                  ),
+                ),
               ),
-              BookButton(media: media),
             ],
           ),
         ),

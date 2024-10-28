@@ -11,7 +11,7 @@ final List serviceList = [
         "https://www.bespokecleanpro.com.sg/wp-content/uploads/2022/12/Vacuuming.jpg",
     "rating": 3.5,
     "about":
-        "This service will help you to clean your home and also help to remove deep stains. Our Service provider will use effective chemicals that will wash your home smoothly and neatly.\nOur home cleaning services:\nBathroom Deep Cleaning\nKitchen Cleaning (Without inside cabinet clean, Kitchen Hood, Exhaust Fan)\nFloor Deep Cleaning\nHome Deep Cleaning\nCommon Space Cleaning (If Need price will be shared accordingly)"
+        "This service will help you to clean your home and also help to remove deep stains. Our Service provider will use effective chemicals that will wash your home smoothly and neatly.\nOur home cleaning services:\nBathroom Deep Cleaning\nKitchen Cleaning (Without inside cabinet clean, Kitchen Hood, Exhaust Fan)\nFloor Deep Cleaning\nHome Deep Cleaning\nCommon Space Cleaning (If Need price will be shared accordingly\nWhy get service from here?\nOne stop cleaning service\nVery easy to order\nWe are only one phone call or chat away\nSaves time & energy from your daily activities\nLess expanse compared to other laundry service provider\nNo need to waste time in front of any laundry shop for deposit and pickup\nThis service will help you to clean your home and also help to remove deep stains.)"
   },
   {
     "charge": 24.0,
@@ -29,7 +29,7 @@ final List serviceList = [
   {
     "charge": 24.0,
     "serviceManName": "Zillu",
-    "serviceType": "Reparing",
+    "serviceType": "Repairing",
     "serviceManImage":
         "https://t3.ftcdn.net/jpg/06/99/46/60/240_F_699466075_DaPTBNlNQTOwwjkOiFEoOvzDV0ByXR9E.jpg",
     "serviceImage1":
