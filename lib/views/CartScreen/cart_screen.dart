@@ -96,7 +96,7 @@ class CartItem extends StatelessWidget {
                   Text(
                     serviceManName,
                     style: const TextStyle(
-                      fontSize: 21,
+                      fontSize: 18,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
@@ -106,7 +106,7 @@ class CartItem extends StatelessWidget {
                     icon: const Icon(
                       Icons.delete_outlined,
                       color: Colors.red,
-                      size: 40,
+                      size: 25,
                     ),
                   ),
                 ],
@@ -114,12 +114,12 @@ class CartItem extends StatelessWidget {
               Text(
                 serviceType,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Colors.black54,
                 ),
               ),
               const SizedBox(
-                height: 16,
+                height: 8,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

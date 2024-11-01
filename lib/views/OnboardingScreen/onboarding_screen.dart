@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_service/helper/data_source.dart';
+import 'package:my_service/views/LoginScreen/login_screen.dart';
 import 'package:my_service/views/MainPage/main_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -73,10 +74,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           backgroundImage: AssetImage(
                             page.image!,
                           ),
-                          radius: 130,
+                          radius: 120,
                         ),
                         const SizedBox(
-                          height: 30,
+                          height: 20,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -84,7 +85,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             page.title!,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 28,
+                              fontSize: 25,
                             ),
                             textAlign: TextAlign.center,
                           ),
@@ -106,15 +107,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   if (currentIndex == onBoardList.length - 1) {
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (context) => const MainPage(),
+                        builder: (context) => const LoginScreen(),
                       ),
                     );
                   }
                   _pageController.nextPage(
-                      duration: const Duration(
-                        milliseconds: 150,
-                      ),
-                      curve: Curves.bounceIn);
+                    duration: const Duration(
+                      milliseconds: 150,
+                    ),
+                    curve: Curves.bounceIn,
+                  );
                 },
                 child: Container(
                   padding: const EdgeInsets.all(15),
