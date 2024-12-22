@@ -10,7 +10,7 @@ I use this package to build it:
   bottom_picker:
   intl:
 
-##Screenshots:
+## Screenshots: <br/>
 <img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/splash.jpg" height="200"/> 
 <img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/phone.jpg" height="200"/> 
 <img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/otp.jpg" height="200"/> 
