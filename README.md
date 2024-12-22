@@ -1,10 +1,17 @@
 # my_service
 
-A new Flutter project.
+Ui design Done.
 
-## Getting Started
+Using this app, user can create their account and take service from here for their home. It is only UI Design.
+I use this package to build it:
+  curved_navigation_bar:
+  flutter_native_splash: ^2.4.2
+  fluttertoast: ^8.2.8
+  bottom_picker:
+  intl:
 
-This project is a starting point for a Flutter application.
+##Screenshots:
+<img src = "https://github.com/moshaddaque/my_service/blob/master/screenshots/splash.jpg"height="200px"/> <img src = "https://github.com/moshaddaque/my_service/blob/master/screenshots/phone.jpg"height="200px"/> <img src = "https://github.com/moshaddaque/my_service/blob/master/screenshots/otp.jpg"height="200px"/> <img src = "https://github.com/moshaddaque/my_service/blob/master/screenshots/onboarding.jpg"height="200px"/> <img src = "https://github.com/moshaddaque/my_service/blob/master/screenshots/home.jpg"height="200px"/> <img src = "https://github.com/moshaddaque/my_service/blob/master/screenshots/schedule.jpg"height="200px"/> <img src = "https://github.com/moshaddaque/my_service/blob/master/screenshots/cart.jpg"height="200px"/> <img src = "https://github.com/moshaddaque/my_service/blob/master/screenshots/profile.jpg"height="200px"/>
 
 A few resources to get you started if this is your first Flutter project:
 
