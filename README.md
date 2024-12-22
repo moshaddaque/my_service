@@ -11,14 +11,14 @@ I use this package to build it:
   intl:
 
 ##Screenshots:
-<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/splash.jpg"/> 
-<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/phone.jpg"/> 
-<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/otp.jpg"/> 
-<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/onboarding.jpg"/> 
-<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/home.jpg"/> 
-<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/schedule.jpg"/> 
-<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/cart.jpg"/> 
-<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/profile.jpg"/>
+<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/splash.jpg" height="200"/> 
+<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/phone.jpg" height="200"/> 
+<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/otp.jpg" height="200"/> 
+<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/onboarding.jpg" height="200"/> 
+<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/home.jpg" height="200"/> 
+<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/schedule.jpg" height="200"/> 
+<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/cart.jpg" height="200"/> 
+<img src="https://github.com/moshaddaque/my_service/blob/master/screenshots/profile.jpg" height="200"/>
 
 A few resources to get you started if this is your first Flutter project:
 
