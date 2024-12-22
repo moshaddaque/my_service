@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_service/helper/data_source.dart';
 import 'package:my_service/views/LoginScreen/login_screen.dart';
-import 'package:my_service/views/MainPage/main_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -44,7 +43,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (context) => const MainPage(),
+                          builder: (context) => const LoginScreen(),
                         ),
                       );
                     },
